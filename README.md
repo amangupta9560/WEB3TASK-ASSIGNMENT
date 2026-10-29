@@ -17,16 +17,14 @@
   </p>
 
   <div style="margin: 20px 0;">
-    <a href="YOUR_LIVE_URL_HERE" style="background-color: #ef4444; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);">
+    <a href="https://web3task-aman.netlify.app/" style="background-color: #ef4444; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);">
       🚀 LAUNCH PUBLIC LIVE DEMO
     </a>
   </div>
 
   <table align="center" cellpadding="8" cellspacing="0" border="0">
     <tr>
-      <td align="center"><a href="https://web-3-task-assignment.vercel.app">🌐 Backend API &amp; WebSocket Gateway</a></td>
-      <td align="center">•</td>
-      <td align="center"><a href="YOUR_DEMO_VIDEO_HERE">🎥 Video Walkthrough</a></td>
+      <td align="center"><a href="https://web-3-task-assignment.vercel.app">🌐 Backend API &amp; Service</a></td>
       <td align="center">•</td>
       <td align="center"><a href="https://github.com/amangupta9560">🐛 Report Bug</a></td>
       <td align="center">•</td>
@@ -61,7 +59,6 @@
   <li><a href="#security-and-validation">🛡️ Security and validation</a></li>
   <li><a href="#performance-and-scalability">⚡ Performance and scalability</a></li>
   <li><a href="#testing">🧪 Testing</a></li>
-  <li><a href="#code-walkthrough-and-viva-prep">🎓 Code walkthrough and viva prep</a></li>
   <li><a href="#troubleshooting-and-faq">🛠️ Troubleshooting and FAQ</a></li>
   <li><a href="#roadmap-and-bonus-features">🗺️ Roadmap and bonus features</a></li>
   <li><a href="#contributing">🤝 Contributing</a></li>
@@ -1286,23 +1283,23 @@ npm run dev</code></pre>
 
 <div style="background-color: #eff6ff; border-left: 5px solid #3b82f6; padding: 16px; margin: 20px 0; border-radius: 4px;">
   <p><b>Public Production Deployment:</b></p>
-  <p><b>Live Application URL:</b> <a href="YOUR_LIVE_URL_HERE">YOUR_LIVE_URL_HERE</a></p>
+  <p><b>Live Frontend Application:</b> <a href="https://web3task-aman.netlify.app/">https://web3task-aman.netlify.app/</a></p>
   <p><b>Backend API Service:</b> <a href="https://web-3-task-assignment.vercel.app">https://web-3-task-assignment.vercel.app</a></p>
 </div>
 
-<h3>Frontend Deployment on Vercel</h3>
+<h3>Frontend Deployment on Netlify</h3>
 <ol>
-  <li>Connect your repository to <a href="https://vercel.com">Vercel</a>.</li>
-  <li>Set <b>Root Directory</b> to <code>frontend</code>.</li>
+  <li>Connect your repository to <a href="https://netlify.com">Netlify</a>.</li>
+  <li>Set <b>Base Directory</b> to <code>frontend</code> (or leave root with the included <code>netlify.toml</code>).</li>
   <li>Build Command: <code>npm run build</code></li>
-  <li>Output Directory: <code>dist</code></li>
-  <li>Configure Environment Variables in Vercel Dashboard:
+  <li>Publish Directory: <code>dist</code></li>
+  <li>Configure Environment Variables in Netlify Dashboard:
     <ul>
-      <li><code>VITE_API_URL</code> = <code>https://your-backend-app.onrender.com</code></li>
-      <li><code>VITE_SOCKET_URL</code> = <code>https://your-backend-app.onrender.com</code></li>
+      <li><code>VITE_API_URL</code> = <code>https://web-3-task-assignment.vercel.app</code></li>
+      <li><code>VITE_SOCKET_URL</code> = <code>https://web-3-task-assignment.vercel.app</code></li>
     </ul>
   </li>
-  <li>Deploy! (<code>frontend/vercel.json</code> includes SPA rewrites to ensure direct route links like <code>/#room=id</code> load seamlessly).</li>
+  <li>Deploy! SPA redirects are automatically preserved via <code>netlify.toml</code> and <code>_redirects</code> inside <code>dist/</code>.</li>
 </ol>
 
 <h3>WebSocket Backend Deployment on Render / Railway</h3>
@@ -1671,91 +1668,6 @@ s.on('role_assigned', d => {
   <li><b>Action Approval:</b> Participant requests video change ➔ Host approves ➔ Video changes globally.</li>
   <li><b>Kick Action:</b> Host kicks participant ➔ Kicked user is redirected home with alert.</li>
 </ol>
-
-<p align="right"><a href="#top">▲ Back to Top</a></p>
-
-<hr>
-
-<h2 id="code-walkthrough-and-viva-prep">🎓 Code walkthrough and viva prep</h2>
-
-<details open>
-  <summary><b>15 Detailed Viva &amp; Code Walkthrough Questions &amp; Answers</b> (Click to expand / collapse)</summary>
-
-  <h4>Q1: Why did you choose Socket.IO instead of raw WebSockets (ws)?</h4>
-  <p><b>Answer:</b> While raw <code>ws</code> is lightweight, Socket.IO provides battle-tested enterprise features essential for a watch party: automatic reconnection, room multiplexing (<code>socket.join(roomId)</code>), automatic HTTP long-polling fallback if corporate firewalls block WebSockets, built-in heartbeat/ping-timeout detection, and seamless readiness for horizontal Redis scaling.</p>
-
-  <h4>Q2: How does the application prevent infinite feedback loops during synchronization?</h4>
-  <p><b>Answer:</b> In <code>frontend/src/components/YouTubePlayer.jsx</code>, we maintain a mutable reference: <code>const isSyncingRef = useRef(false);</code>. When a <code>sync_state</code> event arrives from the WebSocket, we set <code>isSyncingRef.current = true;</code> before programmatically calling <code>player.seekTo()</code> or <code>player.playVideo()</code>. When the player natively fires its <code>onStateChange</code> event, the handler checks <code>if (isSyncingRef.current) return;</code>, preventing the client from echoing the event back to the server. The flag resets after a 500ms timeout.</p>
-
-  <h4>Q3: How do you handle video playback drift between users on different connections?</h4>
-  <p><b>Answer:</b> Network packet arrival varies by milliseconds. If we forced a player seek on every minor update, the video would constantly stutter. We implemented a <b>1.8-second tolerance threshold</b>:
-  <pre><code>if (Math.abs(localCurrentTime - serverTime) &gt; 1.8) {
-  playerRef.current.seekTo(serverTime, true);
-}</code></pre>
-  If local playback is within 1.8 seconds of the server timestamp, natural playback continues smoothly without audio artifacts.</p>
-
-  <h4>Q4: How does a late joiner get synchronized to a video already playing for 20 minutes?</h4>
-  <p><b>Answer:</b> In <code>backend/utils/roomManager.js</code>, the <code>RoomSession</code> class tracks <code>currentTime</code> and <code>lastUpdatedAt</code>. When a user connects midway, the server evaluates:
-  <pre><code>getEstimatedTime() {
-  if (this.playState === 'playing') {
-    const elapsedSeconds = (Date.now() - this.lastUpdatedAt) / 1000;
-    return this.currentTime + elapsedSeconds;
-  }
-  return this.currentTime;
-}</code></pre>
-  This estimated timestamp is sent via <code>sync_state</code>, immediately seeking the new joiner to the active playhead.</p>
-
-  <h4>Q5: How is Role-Based Access Control enforced on the backend?</h4>
-  <p><b>Answer:</b> Role enforcement is executed server-side before any state mutation. When a socket emits <code>change_video</code>, <code>socketHandler.js</code> looks up the <code>Participant</code> instance associated with <code>socket.id</code>. It invokes <code>roomSession.changeVideo(videoId, participant.userId)</code>:
-  <pre><code>changeVideo(videoId, requesterUserId) {
-  const requester = this.participants.get(requesterUserId);
-  if (!requester || !requester.canControlPlayback()) {
-    throw new Error('Permission denied: Only Host or Moderator can change video.');
-  }
-  this.currentVideoId = videoId;
-  ...
-}</code></pre>
-  If unauthorized, the server catches the error and emits an <code>error_message</code> back only to that socket, ensuring no unauthorized broadcasts occur.</p>
-
-  <h4>Q6: Why did you structure the WebSocket server using Object-Oriented Programming (OOP)?</h4>
-  <p><b>Answer:</b> As suggested in the assignment bonus, encapsulating state into <code>Participant</code>, <code>RoomSession</code>, and <code>RoomManager</code> classes provides clean separation of concerns. The <code>Participant</code> class encapsulates identity and permission methods (<code>canControlPlayback</code>, <code>isHost</code>); <code>RoomSession</code> encapsulates playback state, drift calculations, and atomic state mutation methods; <code>RoomManager</code> serves as a global singleton registry.</p>
-
-  <h4>Q7: What happens when the Host abruptly closes their browser tab or disconnects?</h4>
-  <p><b>Answer:</b> In <code>RoomSession.removeParticipantBySocketId(socketId)</code>:
-  <pre><code>if (participant &amp;&amp; participant.isHost() &amp;&amp; this.participants.size &gt; 0) {
-  const nextUser = this.participants.values().next().value;
-  if (nextUser) {
-    nextUser.role = 'host';
-  }
-}</code></pre>
-  If the host leaves and other users remain, the server automatically promotes the next senior participant to Host and broadcasts <code>host_transferred</code>, preventing orphaned rooms.</p>
-
-  <h4>Q8: How does the Participant Action Request workflow operate?</h4>
-  <p><b>Answer:</b> When a participant wishes to change the video, they emit <code>request_action { roomId, actionType: 'change_video', payload: { videoId } }</code>. The server queues this request in <code>roomSession.pendingRequests</code> and emits <code>action_requested</code> to the room. The Host or Moderator receives an interactive card with Approve and Reject buttons. Clicking Approve emits <code>resolve_action</code>, which automatically executes the action and broadcasts the resulting <code>sync_state</code>.</p>
-
-  <h4>Q9: Why can't the WebSocket backend be hosted on Vercel Serverless Functions?</h4>
-  <p><b>Answer:</b> Serverless functions on platforms like Vercel or AWS Lambda are stateless and ephemeral, terminating execution after handling an HTTP request. WebSockets require a persistent, long-lived TCP connection that remains open for hours. Therefore, the WebSocket backend must run on a containerized, persistent web service like Render or Railway.</p>
-
-  <h4>Q10: How do you parse YouTube URLs into clean video IDs?</h4>
-  <p><b>Answer:</b> In <code>backend/controller/roomController.js</code> and <code>frontend/src/pages/WatchRoom.jsx</code>, we use a robust regular expression:
-  <pre><code>/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))([\w-]{11})/</code></pre>
-  This extracts the 11-character video ID from standard watch URLs, short URLs (<code>youtu.be</code>), embedded URLs, or raw 11-character IDs, discarding tracking parameters like <code>&amp;t=</code> or <code>&amp;si=</code>.</p>
-
-  <h4>Q11: How did you implement email invitations using Nodemailer?</h4>
-  <p><b>Answer:</b> In <code>backend/config/mailer.js</code>, we configure a Nodemailer transporter using Gmail SMTP credentials. <code>roomController.js</code> generates a responsive, branded HTML email template containing the room title, inviter name, unique room code, and a stylized button linking to <code>/#room=id</code>. It includes fallback logging so development environments function seamlessly even if credentials fail.</p>
-
-  <h4>Q12: How does the client handle port conflicts in development?</h4>
-  <p><b>Answer:</b> If port 5000 is occupied by another process on the developer's computer, <code>backend/index.js</code> catches <code>EADDRINUSE</code> and automatically switches to port 5001. Both <code>frontend/src/services/api.js</code> and <code>socket.js</code> feature automatic fallback logic that retries on port 5001 if port 5000 fails to respond.</p>
-
-  <h4>Q13: How is user identity managed if someone does not want to register?</h4>
-  <p><b>Answer:</b> In <code>frontend/src/context/AuthContext.jsx</code>, we generate and persist a persistent guest ID: <code>guest_${Date.now()}_${Math.random().toString(36).substr(2, 4)}</code> in <code>localStorage</code>. Users can enter a custom guest nickname or register an account with JWT authentication.</p>
-
-  <h4>Q14: What is the purpose of the <code>isPrivate</code> flag in the Room model?</h4>
-  <p><b>Answer:</b> <code>isPrivate: Boolean</code> controls room visibility. When false, the room appears in the public discovery feed via <code>GET /api/rooms</code>. When true, the party can only be joined by individuals who possess the explicit room code or direct deep link.</p>
-
-  <h4>Q15: What trade-offs were made between native YouTube controls and custom UI controls?</h4>
-  <p><b>Answer:</b> Standard YouTube iframes embed their own play/pause/seek buttons. However, native iframe controls do not respect backend role enforcement (a participant could click play directly on the iframe). We set <code>controls: 0</code> and <code>disablekb: 1</code> in the YouTube Player parameters and built a custom synchronized control bar. This allows our code to intercept clicks, verify permissions, and enforce role-based access before any action takes place.</p>
-</details>
 
 <p align="right"><a href="#top">▲ Back to Top</a></p>
 

@@ -125,8 +125,8 @@ const sendInviteEmail = async (req, res, next) => {
     const room = await Room.findOne({ roomId });
     const roomTitle = room ? room.title : 'YouTube Watch Party';
     const sender = inviterName || (req.user ? req.user.name : 'A friend');
-    const clientBaseUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-    const joinUrl = `${clientBaseUrl}/room/${roomId}`;
+    const clientBaseUrl = process.env.CLIENT_URL || 'https://web3task-aman.netlify.app';
+    const joinUrl = `${clientBaseUrl}/#room=${roomId}`;
 
     const emailSubject = `🎬 You're invited to watch: "${roomTitle}"`;
     const emailHtml = `
