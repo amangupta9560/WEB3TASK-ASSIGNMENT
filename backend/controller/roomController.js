@@ -179,9 +179,29 @@ const sendInviteEmail = async (req, res, next) => {
   }
 };
 
+const updateRoomState = async (req, res, next) => {
+  try {
+    const { roomId } = req.params;
+    const { currentVideoId, playState, currentTime } = req.body;
+    const update = {};
+    if (currentVideoId) update.currentVideoId = currentVideoId;
+    if (playState) update.playState = playState;
+    if (typeof currentTime === 'number') update.currentTime = currentTime;
+
+    const room = await Room.findOneAndUpdate({ roomId }, { $set: update }, { new: true });
+    res.status(200).json({
+      success: true,
+      data: { room }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createRoom,
   getRoom,
   getAllRooms,
-  sendInviteEmail
+  sendInviteEmail,
+  updateRoomState
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const DEFAULT_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+const DEFAULT_API_URL = import.meta.env.VITE_API_URL || 'https://web-3-task-assignment.vercel.app';
 
 const api = axios.create({
   baseURL: `${DEFAULT_API_URL}/api`,
@@ -54,7 +54,9 @@ export const roomAPI = {
   getAll: () =>
     api.get('/rooms'),
   sendInvite: (roomId, recipientEmail, inviterName) =>
-    api.post(`/rooms/${roomId}/invite`, { recipientEmail, inviterName })
+    api.post(`/rooms/${roomId}/invite`, { recipientEmail, inviterName }),
+  updateState: (roomId, state) =>
+    api.patch(`/rooms/${roomId}/state`, state)
 };
 
 export default api;

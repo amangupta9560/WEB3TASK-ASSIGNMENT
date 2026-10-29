@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const DEFAULT_SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001';
+const DEFAULT_SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'https://web-3-task-assignment.vercel.app';
 const FALLBACK_SOCKET_URL = 'http://localhost:5001';
 
 let socket = null;

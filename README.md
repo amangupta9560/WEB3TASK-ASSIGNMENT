@@ -24,7 +24,7 @@
 
   <table align="center" cellpadding="8" cellspacing="0" border="0">
     <tr>
-      <td align="center"><a href="YOUR_BACKEND_URL_HERE">🌐 WebSocket Backend URL</a></td>
+      <td align="center"><a href="https://web-3-task-assignment.vercel.app">🌐 Backend API &amp; WebSocket Gateway</a></td>
       <td align="center">•</td>
       <td align="center"><a href="YOUR_DEMO_VIDEO_HERE">🎥 Video Walkthrough</a></td>
       <td align="center">•</td>
@@ -1287,7 +1287,7 @@ npm run dev</code></pre>
 <div style="background-color: #eff6ff; border-left: 5px solid #3b82f6; padding: 16px; margin: 20px 0; border-radius: 4px;">
   <p><b>Public Production Deployment:</b></p>
   <p><b>Live Application URL:</b> <a href="YOUR_LIVE_URL_HERE">YOUR_LIVE_URL_HERE</a></p>
-  <p><b>WebSocket Backend Service:</b> <a href="YOUR_BACKEND_URL_HERE">YOUR_BACKEND_URL_HERE</a></p>
+  <p><b>Backend API Service:</b> <a href="https://web-3-task-assignment.vercel.app">https://web-3-task-assignment.vercel.app</a></p>
 </div>
 
 <h3>Frontend Deployment on Vercel</h3>

@@ -70,8 +70,15 @@ const WatchRoom = ({ roomId, onLeave }) => {
     };
 
     loadRoomMeta();
+    const pollInterval = setInterval(() => {
+      if (!socketRef.current || !socketRef.current.connected) {
+        loadRoomMeta();
+      }
+    }, 3500);
+
     return () => {
       isMounted = false;
+      clearInterval(pollInterval);
     };
   }, [roomId]);
 
@@ -203,15 +210,18 @@ const WatchRoom = ({ roomId, onLeave }) => {
 
   const handlePlay = useCallback(() => {
     socketRef.current?.emit('play', { roomId });
+    roomAPI.updateState(roomId, { playState: 'playing' }).catch(() => {});
   }, [roomId]);
 
   const handlePause = useCallback(() => {
     socketRef.current?.emit('pause', { roomId });
+    roomAPI.updateState(roomId, { playState: 'paused' }).catch(() => {});
   }, [roomId]);
 
   const handleSeek = useCallback(
     (time) => {
       socketRef.current?.emit('seek', { roomId, time });
+      roomAPI.updateState(roomId, { currentTime: time }).catch(() => {});
     },
     [roomId]
   );
@@ -227,6 +237,7 @@ const WatchRoom = ({ roomId, onLeave }) => {
 
     if (canControl) {
       socketRef.current?.emit('change_video', { roomId, videoId: id });
+      roomAPI.updateState(roomId, { currentVideoId: id, playState: 'playing', currentTime: 0 }).catch(() => {});
       setIsChangeVideoOpen(false);
       setNewVideoInput('');
     } else {
