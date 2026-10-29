@@ -49,6 +49,15 @@ const io = new Server(server, {
 
 initSocketHandler(io);
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    name: 'YouTube Watch Party Backend API',
+    status: 'online',
+    health: '/api/health',
+    version: '1.0.0'
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -57,9 +66,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.send('YouTube Watch Party Server is running');
-});
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 
@@ -91,8 +97,9 @@ server.on('error', (err) => {
   }
 });
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   startServer(PORT);
 }
 
-module.exports = { app, server };
+app.server = server;
+module.exports = app;
