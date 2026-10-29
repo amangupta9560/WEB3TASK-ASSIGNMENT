@@ -28,9 +28,9 @@
       <td align="center">•</td>
       <td align="center"><a href="YOUR_DEMO_VIDEO_HERE">🎥 Video Walkthrough</a></td>
       <td align="center">•</td>
-      <td align="center"><a href="https://github.com/YOUR_GITHUB_HERE/issues">🐛 Report Bug</a></td>
+      <td align="center"><a href="https://github.com/amangupta9560">🐛 Report Bug</a></td>
       <td align="center">•</td>
-      <td align="center"><a href="https://github.com/YOUR_GITHUB_HERE/issues">✨ Request Feature</a></td>
+      <td align="center"><a href="https://github.com/amangupta9560">✨ Request Feature</a></td>
     </tr>
   </table>
 </div>
@@ -1914,24 +1914,36 @@ s.on('role_assigned', d => {
 
 <table cellpadding="8" cellspacing="0" border="0">
   <tr>
-    <td><b>Author Name:</b></td>
-    <td>YOUR_NAME_HERE</td>
+    <td><b>Candidate Name:</b></td>
+    <td>Aman Gupta</td>
   </tr>
   <tr>
-    <td><b>GitHub Profile:</b></td>
-    <td><a href="https://github.com/YOUR_GITHUB_HERE">https://github.com/YOUR_GITHUB_HERE</a></td>
+    <td><b>Target Role:</b></td>
+    <td>Full Stack Developer</td>
+  </tr>
+  <tr>
+    <td><b>Company / Assignment:</b></td>
+    <td>Web3Task</td>
   </tr>
   <tr>
     <td><b>Email Address:</b></td>
-    <td><a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></td>
+    <td><a href="mailto:ag0567688@gmail.com">ag0567688@gmail.com</a></td>
   </tr>
   <tr>
-    <td><b>LinkedIn:</b></td>
-    <td><a href="https://linkedin.com/in/YOUR_LINKEDIN_HERE">https://linkedin.com/in/YOUR_LINKEDIN_HERE</a></td>
+    <td><b>Mobile Number:</b></td>
+    <td><a href="tel:+919651585712">+91 9651585712</a></td>
   </tr>
   <tr>
-    <td><b>Portfolio:</b></td>
-    <td><a href="YOUR_PORTFOLIO_HERE">YOUR_PORTFOLIO_HERE</a></td>
+    <td><b>GitHub Profile:</b></td>
+    <td><a href="https://github.com/amangupta9560">https://github.com/amangupta9560</a></td>
+  </tr>
+  <tr>
+    <td><b>LinkedIn Profile:</b></td>
+    <td><a href="https://www.linkedin.com/in/amangupta9454/">https://www.linkedin.com/in/amangupta9454/</a></td>
+  </tr>
+  <tr>
+    <td><b>Submission Date:</b></td>
+    <td>30 Oct 2026</td>
   </tr>
 </table>
 
@@ -1960,7 +1972,7 @@ s.on('role_assigned', d => {
 <hr>
 
 <div align="center">
-  <p>Built with ❤️ for the Full-Stack Developer Internship Assignment</p>
+  <p>Built with ❤️ by <b>Aman Gupta</b> for the Full-Stack Developer Role Assignment at <b>Web3Task</b></p>
   <p><a href="#top">▲ Back to Top of Page</a></p>
   <p>© 2026 SyncParty System. All rights reserved.</p>
 </div>

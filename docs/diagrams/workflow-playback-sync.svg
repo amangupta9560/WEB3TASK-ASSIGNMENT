@@ -68,9 +68,9 @@
 
   <rect x="325" y="360" width="260" height="100" rx="8" fill="#d1fae5" stroke="#10b981" />
   <text x="335" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#065f46">Broadcast to Room Channel</text>
-  <text x="335" y="402" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">io.to(roomId).emit('sync_state', {</text>
-  <text x="345" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">  videoId, playState, currentTime</text>
-  <text x="335" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">})</text>
+  <text x="335" y="402" font-family="monospace" font-size="11px" fill="#047857">io.to(roomId).emit('sync_state', {</text>
+  <text x="345" y="420" font-family="monospace" font-size="11px" fill="#047857">  videoId, playState, currentTime</text>
+  <text x="335" y="438" font-family="monospace" font-size="11px" fill="#047857">})</text>
 
   
   <rect x="650" y="80" width="280" height="400" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
@@ -81,21 +81,21 @@
 
   <rect x="665" y="130" width="250" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
   <text x="675" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Step A: Set Loop-Guard</text>
-  <text x="675" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#dc2626">isSyncingRef.current = true;</text>
+  <text x="675" y="172" font-family="monospace" font-size="11px" fill="#dc2626">isSyncingRef.current = true;</text>
   <text x="675" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Blocks local onStateChange from</text>
   <text x="675" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">firing another event to the server!</text>
 
   <rect x="665" y="245" width="250" height="110" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
   <text x="675" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Step B: Drift &amp; Playback Sync</text>
   <text x="675" y="287" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">if (|currentPos - time| &gt; 1.8s) {</text>
-  <text x="685" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">player.seekTo(time, true);</text>
+  <text x="685" y="305" font-family="monospace" font-size="11px" fill="#047857">player.seekTo(time, true);</text>
   <text x="675" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">}</text>
   <text x="675" y="341" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Apply playVideo() or pauseVideo()</text>
 
   <rect x="665" y="370" width="250" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
   <text x="675" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Step C: Release Guard</text>
   <text x="675" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">After 500ms timeout:</text>
-  <text x="675" y="432" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#059669">isSyncingRef.current = false;</text>
+  <text x="675" y="432" font-family="monospace" font-size="11px" fill="#059669">isSyncingRef.current = false;</text>
   <text x="675" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Loop completely eliminated! ✅</text>
 
   
