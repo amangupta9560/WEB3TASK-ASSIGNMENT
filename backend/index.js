@@ -57,6 +57,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('YouTube Watch Party Server is running');
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 
