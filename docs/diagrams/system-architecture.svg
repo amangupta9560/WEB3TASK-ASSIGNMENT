@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4f46e5" />
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  
+  <rect width="960" height="560" fill="#f8fafc" />
+
+  
+  <rect x="0" y="0" width="960" height="56" fill="#0f172a" />
+  <text x="30" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="18px" font-weight="700" fill="#ffffff">
+    SyncParty — System Architecture &amp; Component Topology
+  </text>
+  <text x="820" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#94a3b8">
+    Full-Stack Overview
+  </text>
+
+  
+  <rect x="30" y="80" width="270" height="440" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)" />
+  <rect x="30" y="80" width="270" height="40" rx="12" fill="#fee2e2" />
+  <text x="50" y="106" font-family="system-ui, -apple-system, sans-serif" font-size="14px" font-weight="700" fill="#991b1b">
+    CLIENT TIER (React 19 + Vite)
+  </text>
+
+  
+  <rect x="50" y="136" width="230" height="74" rx="8" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="64" y="160" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">YouTube Player Module</text>
+  <text x="64" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">YouTube IFrame API Engine</text>
+  <text x="64" y="196" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">isSyncingRef Loop-Guard</text>
+
+  <rect x="50" y="224" width="230" height="74" rx="8" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="64" y="248" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">Socket.IO Client Service</text>
+  <text x="64" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">Singleton (ws + polling)</text>
+  <text x="64" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">Auto-reconnect &amp; port fallback</text>
+
+  <rect x="50" y="312" width="230" height="84" rx="8" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="64" y="334" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">UI &amp; State Components</text>
+  <text x="64" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">WatchRoom, ParticipantList</text>
+  <text x="64" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">ChatAndReactions, InviteModal</text>
+  <text x="64" y="386" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">AuthContext (JWT + Guest state)</text>
+
+  <rect x="50" y="410" width="230" height="90" rx="8" fill="#fef3c7" stroke="#fcd34d" />
+  <text x="64" y="432" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#92400e">Connected User Roles</text>
+  <text x="64" y="452" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#b45309">👑 Host (Full control)</text>
+  <text x="64" y="470" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#4338ca">🛡️ Moderator (Playback control)</text>
+  <text x="64" y="488" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#047857">👤 Participant (Watch only)</text>
+
+  
+  <rect x="350" y="80" width="310" height="440" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)" />
+  <rect x="350" y="80" width="310" height="40" rx="12" fill="#e0e7ff" />
+  <text x="370" y="106" font-family="system-ui, -apple-system, sans-serif" font-size="14px" font-weight="700" fill="#3730a3">
+    BACKEND TIER (Node.js + Express)
+  </text>
+
+  <rect x="370" y="136" width="270" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="384" y="160" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">Socket.IO Gateway Layer</text>
+  <text x="384" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">socketHandler.js (WebSocket)</text>
+  <text x="384" y="198" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">Event routing: play, pause, seek, role</text>
+
+  <rect x="370" y="230" width="270" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="384" y="254" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">OOP Domain Engine</text>
+  <text x="384" y="274" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">RoomManager (Registry Singleton)</text>
+  <text x="384" y="292" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">RoomSession (State &amp; Drift logic)</text>
+  <text x="384" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#dc2626">RBAC Validator (Permissions check)</text>
+
+  <rect x="370" y="340" width="270" height="84" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="384" y="364" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">REST API Controllers</text>
+  <text x="384" y="384" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">authController (Register, Login, JWT)</text>
+  <text x="384" y="402" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">roomController (Rooms, Nodemailer)</text>
+
+  <rect x="370" y="438" width="270" height="64" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="384" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">Middleware &amp; Security</text>
+  <text x="384" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">authMiddleware (JWT Verify), ErrorHandler</text>
+
+  
+  <rect x="710" y="80" width="220" height="440" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)" />
+  <rect x="710" y="80" width="220" height="40" rx="12" fill="#d1fae5" />
+  <text x="724" y="106" font-family="system-ui, -apple-system, sans-serif" font-size="14px" font-weight="700" fill="#065f46">
+    DATA &amp; SERVICES
+  </text>
+
+  <rect x="726" y="140" width="188" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="738" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">MongoDB Atlas</text>
+  <text x="738" y="184" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">User collection</text>
+  <text x="738" y="202" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">Room state collection</text>
+
+  <rect x="726" y="236" width="188" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="738" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">YouTube CDN</text>
+  <text x="738" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">IFrame API Scripts</text>
+  <text x="738" y="298" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">Video stream delivery</text>
+
+  <rect x="726" y="332" width="188" height="76" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="738" y="356" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">Nodemailer SMTP</text>
+  <text x="738" y="376" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">Gmail Transport</text>
+  <text x="738" y="394" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">Room invite delivery</text>
+
+  <rect x="726" y="424" width="188" height="76" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="738" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#0f172a">Cloudinary</text>
+  <text x="738" y="468" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#475569">Media storage config</text>
+  <text x="738" y="486" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#64748b">Profile assets</text>
+
+  
+  
+  <line x1="300" y1="260" x2="350" y2="260" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
+  <line x1="350" y1="275" x2="300" y2="275" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <text x="306" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#dc2626">WebSocket</text>
+  <text x="312" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#4f46e5">Sync</text>
+
+  
+  <line x1="300" y1="365" x2="350" y2="365" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="310" y="355" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#475569">REST API</text>
+
+  
+  <line x1="660" y1="180" x2="710" y2="180" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="668" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#475569">Mongoose</text>
+
+  
+  <line x1="660" y1="370" x2="710" y2="370" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="672" y="362" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#475569">SMTP</text>
+</svg>

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
+  <defs>
+    <marker id="cd-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a" />
+    </marker>
+    <marker id="cd-diamond" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 6 L 6 0 L 12 6 L 6 12 z" fill="#0f172a" />
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="#f8fafc" />
+
+  
+  <rect x="0" y="0" width="960" height="52" fill="#0f172a" />
+  <text x="30" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16px" font-weight="700" fill="#ffffff">
+    Server Object-Oriented Architecture (OOP) Class Diagram
+  </text>
+  <text x="730" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="12px" fill="#94a3b8">
+    backend/utils/roomManager.js
+  </text>
+
+  
+  <g transform="translate(30, 80)">
+    <rect x="0" y="0" width="260" height="220" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" rx="8" fill="#fee2e2" />
+    <text x="130" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#991b1b" text-anchor="middle">RoomManager (Singleton)</text>
+
+    
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#cbd5e1" />
+    <text x="12" y="55" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">- rooms: Map&lt;string, RoomSession&gt;</text>
+
+    
+    <line x1="0" y1="70" x2="260" y2="70" stroke="#cbd5e1" />
+    <text x="12" y="90" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ getRoom(roomId): RoomSession</text>
+    <text x="12" y="112" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ createOrGetRoom(id, ...): Room</text>
+    <text x="12" y="134" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ deleteRoom(roomId): boolean</text>
+    <text x="12" y="156" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ findRoomBySocketId(sid): Room</text>
+    <text x="12" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="10px" fill="#64748b">Coordinates all active in-memory</text>
+    <text x="12" y="196" font-family="system-ui, -apple-system, sans-serif" font-size="10px" fill="#64748b">room sessions across server.</text>
+  </g>
+
+  
+  <g transform="translate(340, 80)">
+    <rect x="0" y="0" width="310" height="440" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="0" y="0" width="310" height="35" rx="8" fill="#e0e7ff" />
+    <text x="155" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#3730a3" text-anchor="middle">RoomSession</text>
+
+    
+    <line x1="0" y1="35" x2="310" y2="35" stroke="#cbd5e1" />
+    <text x="12" y="55" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ roomId: string</text>
+    <text x="12" y="73" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ title: string</text>
+    <text x="12" y="91" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ currentVideoId: string</text>
+    <text x="12" y="109" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ playState: 'playing' | 'paused'</text>
+    <text x="12" y="127" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ currentTime: number</text>
+    <text x="12" y="145" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ lastUpdatedAt: number</text>
+    <text x="12" y="163" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ participants: Map&lt;id, Participant&gt;</text>
+    <text x="12" y="181" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ socketToUser: Map&lt;sid, uid&gt;</text>
+    <text x="12" y="199" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ pendingRequests: Array&lt;Req&gt;</text>
+
+    
+    <line x1="0" y1="210" x2="310" y2="210" stroke="#cbd5e1" />
+    <text x="12" y="230" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ getEstimatedTime(): number</text>
+    <text x="12" y="250" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ addParticipant(options): Participant</text>
+    <text x="12" y="270" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ removeParticipantBySocketId(sid)</text>
+    <text x="12" y="290" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ removeParticipantByUserId(uid, req)</text>
+    <text x="12" y="310" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ assignRole(uid, role, requester)</text>
+    <text x="12" y="330" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ transferHost(uid, requester)</text>
+    <text x="12" y="350" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ play(requester): Object</text>
+    <text x="12" y="370" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ pause(requester): Object</text>
+    <text x="12" y="390" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ seek(time, requester): Object</text>
+    <text x="12" y="410" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ changeVideo(videoId, requester)</text>
+    <text x="12" y="430" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ getSyncState(): Object</text>
+  </g>
+
+  
+  <g transform="translate(690, 80)">
+    <rect x="0" y="0" width="240" height="290" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="0" y="0" width="240" height="35" rx="8" fill="#d1fae5" />
+    <text x="120" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#065f46" text-anchor="middle">Participant</text>
+
+    
+    <line x1="0" y1="35" x2="240" y2="35" stroke="#cbd5e1" />
+    <text x="12" y="55" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ userId: string</text>
+    <text x="12" y="75" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ socketId: string</text>
+    <text x="12" y="95" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ username: string</text>
+    <text x="12" y="115" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ role: string</text>
+    <text x="12" y="135" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ joinedAt: Date</text>
+
+    
+    <line x1="0" y1="150" x2="240" y2="150" stroke="#cbd5e1" />
+    <text x="12" y="172" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ isHost(): boolean</text>
+    <text x="12" y="194" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ isModerator(): boolean</text>
+    <text x="12" y="216" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ canControlPlayback(): bool</text>
+    <text x="12" y="238" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ canManageRoles(): bool</text>
+    <text x="12" y="260" font-family="system-ui, -apple-system, monospace" font-size="11px" fill="#0f172a">+ toJSON(): Object</text>
+  </g>
+
+  
+  
+  <line x1="290" y1="180" x2="340" y2="180" stroke="#0f172a" stroke-width="1.5" marker-start="url(#cd-diamond)" />
+  <text x="296" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#0f172a">1</text>
+  <text x="325" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#0f172a">0..*</text>
+
+  
+  <line x1="650" y1="180" x2="690" y2="180" stroke="#0f172a" stroke-width="1.5" marker-start="url(#cd-diamond)" />
+  <text x="656" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#0f172a">1</text>
+  <text x="674" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="10px" font-weight="700" fill="#0f172a">1..*</text>
+</svg>

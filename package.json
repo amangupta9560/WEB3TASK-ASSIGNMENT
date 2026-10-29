@@ -1,0 +1,24 @@
+{
+  "name": "youtube-watch-party-system",
+  "version": "1.0.0",
+  "description": "Production-ready YouTube Watch Party System with Real-Time WebSocket Sync and Role-Based Access Control",
+  "scripts": {
+    "start": "node backend/index.js",
+    "backend": "node backend/index.js",
+    "frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "watch-party",
+    "youtube",
+    "websockets",
+    "socket.io",
+    "react",
+    "tailwind",
+    "express",
+    "mongodb"
+  ],
+  "author": "Full Stack Developer",
+  "license": "ISC"
+}

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+  <defs>
+    <marker id="ra-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a" />
+    </marker>
+    <marker id="ra-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="ra-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <rect width="960" height="520" fill="#f8fafc" />
+
+  
+  <rect x="0" y="0" width="960" height="52" fill="#0f172a" />
+  <text x="30" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16px" font-weight="700" fill="#ffffff">
+    Workflow: Role Assignment, Participant Removal, &amp; Host Transfer
+  </text>
+
+  
+  <rect x="30" y="80" width="220" height="400" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <rect x="30" y="80" width="220" height="35" rx="12" fill="#fef3c7" />
+  <text x="45" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#92400e">
+    1. HOST INITIATION
+  </text>
+
+  <rect x="45" y="130" width="190" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="55" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Action A: Assign Role</text>
+  <text x="55" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Click user options menu</text>
+  <text x="55" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#4338ca">Select "Make Moderator"</text>
+  <text x="55" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">or "Demote to Participant"</text>
+
+  <rect x="45" y="245" width="190" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="55" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Action B: Remove User</text>
+  <text x="55" y="287" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Select "Kick from Room"</text>
+  <text x="55" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#dc2626">emit remove_participant</text>
+  <text x="55" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">{ roomId, userId }</text>
+
+  <rect x="45" y="360" width="190" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="55" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Action C: Transfer Host</text>
+  <text x="55" y="402" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">Select "Transfer Host"</text>
+  <text x="55" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#b45309">emit transfer_host</text>
+  <text x="55" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">{ roomId, userId }</text>
+
+  
+  <rect x="300" y="80" width="310" height="400" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <rect x="300" y="80" width="310" height="35" rx="12" fill="#e0e7ff" />
+  <text x="315" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#3730a3">
+    2. SERVER VALIDATION &amp; RBAC
+  </text>
+
+  <rect x="315" y="130" width="280" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="325" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Validation Checks</text>
+  <text x="325" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">1. Is requester the Host? (requester.isHost())</text>
+  <text x="325" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">2. Does targetUserId exist in room?</text>
+  <text x="325" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#475569">3. Target is not already Host</text>
+
+  <rect x="315" y="245" width="280" height="100" rx="8" fill="#fef2f2" stroke="#fca5a5" />
+  <text x="325" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#991b1b">Validation Failure (Non-Host Call)</text>
+  <text x="325" y="287" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#b91c1c">• Throws Error('Only Host can...')</text>
+  <text x="325" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#b91c1c">• Emits error_message to requester</text>
+  <text x="325" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#b91c1c">• No state altered in room</text>
+
+  <rect x="315" y="360" width="280" height="100" rx="8" fill="#d1fae5" stroke="#10b981" />
+  <text x="325" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#065f46">Validation Passed (Atomic Update)</text>
+  <text x="325" y="402" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#047857">• Target participant.role updated</text>
+  <text x="325" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#047857">• If kicked: socket removed from maps</text>
+  <text x="325" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#047857">• If transfer: oldHost=mod, newHost=host</text>
+
+  
+  <rect x="660" y="80" width="270" height="400" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <rect x="660" y="80" width="270" height="35" rx="12" fill="#d1fae5" />
+  <text x="675" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="13px" font-weight="700" fill="#065f46">
+    3. BROADCAST &amp; UI REACTION
+  </text>
+
+  <rect x="675" y="130" width="240" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+  <text x="685" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#0f172a">Role Assigned Event</text>
+  <text x="685" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">emit('role_assigned', {</text>
+  <text x="695" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">  userId, role, participants</text>
+  <text x="685" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#047857">})</text>
+  <text x="685" y="224" font-family="system-ui, -apple-system, sans-serif" font-size="10px" fill="#475569">UI unlocks controls for new Mod</text>
+
+  <rect x="675" y="245" width="240" height="100" rx="8" fill="#fef2f2" stroke="#fca5a5" />
+  <text x="685" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#991b1b">Participant Removed Event</text>
+  <text x="685" y="287" font-family="system-ui, -apple-system, sans-serif" font-size="11px" fill="#b91c1c">Kicked socket: alert &amp; redirect</text>
+  <text x="685" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#b91c1c">emit('participant_removed', {</text>
+  <text x="695" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#b91c1c">  userId, participants })</text>
+  <text x="685" y="339" font-family="system-ui, -apple-system, sans-serif" font-size="10px" fill="#475569">Room list count decreases</text>
+
+  <rect x="675" y="360" width="240" height="100" rx="8" fill="#fef3c7" stroke="#f59e0b" />
+  <text x="685" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="12px" font-weight="700" fill="#b45309">Host Transferred Event</text>
+  <text x="685" y="402" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#92400e">emit('host_transferred', {</text>
+  <text x="695" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#92400e">  oldHost, newHost, participants</text>
+  <text x="685" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="11px" font-family="monospace" fill="#92400e">})</text>
+  <text x="685" y="454" font-family="system-ui, -apple-system, sans-serif" font-size="10px" fill="#475569">UI moves 👑 badge to new Host</text>
+
+  
+  <line x1="250" y1="200" x2="300" y2="200" stroke="#0f172a" stroke-width="2" marker-end="url(#ra-arrow)" />
+  <line x1="610" y1="410" x2="660" y2="410" stroke="#059669" stroke-width="2" marker-end="url(#ra-green)" />
+</svg>
